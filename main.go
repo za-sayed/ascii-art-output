@@ -30,6 +30,7 @@ func main() {
 				}
 			} else {
 				fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]")
+				fmt.Println("Example: go run . --output=<fileName.txt> something standard")
 				return
 			}
 			text = os.Args[2]
@@ -40,6 +41,7 @@ func main() {
 			style = "standard"
 		} else {
 			fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]")
+			fmt.Println("Example: go run . --output=<fileName.txt> something standard")
 			return	
 		}
 		
@@ -52,6 +54,7 @@ func main() {
 			}
 		} else {
 			fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]")
+			fmt.Println("Example: go run . --output=<fileName.txt> something standard")
 			return
 		}
 		text = os.Args[2]
@@ -59,7 +62,7 @@ func main() {
 			fmt.Println("Error: Non-ASCII character detected")
 			return
 		}
-		if strings.ToLower(os.Args[3]) == "shadow" || strings.ToLower(os.Args[2]) == "standard" || strings.ToLower(os.Args[2]) == "thinkertoy" {
+		if strings.ToLower(os.Args[3]) == "shadow" || strings.ToLower(os.Args[3]) == "standard" || strings.ToLower(os.Args[3]) == "thinkertoy" {
 			style = strings.ToLower(os.Args[3])
 		} else {
 			fmt.Println("Invalid style. Please use either shadow, standard, or thinkertoy")
