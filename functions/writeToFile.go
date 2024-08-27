@@ -53,9 +53,11 @@ func writeASCIIToFile(file *os.File, str string, asciiRep [][]string) error {
 				return fmt.Errorf("error writing to file: %v", err)
 			}
 		}
-		_,err := fmt.Fprintln(file, "")
-		if err != nil {
-			return fmt.Errorf("error writing to file: %v", err)
+		if i < 7 {
+			_,err := fmt.Fprint(file, "\n")
+			if err != nil {
+				return fmt.Errorf("error writing to file: %v", err)
+			}
 		}
 	}
 	return nil

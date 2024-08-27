@@ -79,4 +79,6 @@ func main() {
 			fmt.Println("Error writing to file:", err)
 		}
 	}
+	//file, _ := os.ReadFile("result.txt")
+	//fmt.Println(string(file))
 }
