@@ -42,9 +42,9 @@ func main() {
 		} else {
 			fmt.Println("Usage: go run . [OPTION] [STRING] [BANNER]")
 			fmt.Println("Example: go run . --output=<fileName.txt> something standard")
-			return	
+			return
 		}
-		
+
 	} else {
 		if len(os.Args[1]) > 9 && strings.ToLower(os.Args[1][:9]) == "--output=" {
 			outputFile = os.Args[1][9:]

@@ -27,7 +27,7 @@ func WriteToFile(outputFile string, text string, asciiRep [][]string) error {
 				} 
 			} else {
 				if subStrs[index - 1] == "\\n" {
-					_, err = fmt.Fprintln(file)
+					_, err = fmt.Fprint(file)
 					if err != nil {
 						return fmt.Errorf("error writing to file: %v", err)
 					}
@@ -47,13 +47,15 @@ func WriteToFile(outputFile string, text string, asciiRep [][]string) error {
 func writeASCIIToFile(file *os.File, str string, asciiRep [][]string) error {
 	arr := LineNum(str)
 	for i := 0; i < 8; i++ {
+		line := ""
 		for _, num := range arr {
-			_, err := fmt.Fprint(file, asciiRep[num][i])
+			line += asciiRep[num][i]
+			_, err := fmt.Fprint(file, line)
 			if err != nil {
 				return fmt.Errorf("error writing to file: %v", err)
 			}
 		}
-		_, err := fmt.Fprintln(file)
+		_,err := fmt.Fprintln(file)
 		if err != nil {
 			return fmt.Errorf("error writing to file: %v", err)
 		}
