@@ -16,18 +16,18 @@ func WriteToFile(outputFile string, text string, asciiRep [][]string) error {
 	for index, subStr := range subStrs {
 		if subStr == "\\n" {
 			if index == len - 1 {
-				_, err = fmt.Fprintln(file)
+				_, err = fmt.Fprint(file, "\n")
 				if err != nil {
 					return fmt.Errorf("error writing to file: %v", err)
 				}
 			} else if index == 0 {
-				_, err = fmt.Fprintln(file)
+				_, err = fmt.Fprint(file, "\n")
 				if err != nil {
 					return fmt.Errorf("error writing to file: %v", err)
 				} 
 			} else {
 				if subStrs[index - 1] == "\\n" {
-					_, err = fmt.Fprint(file)
+					_, err = fmt.Fprint(file, "\n")
 					if err != nil {
 						return fmt.Errorf("error writing to file: %v", err)
 					}
@@ -47,15 +47,13 @@ func WriteToFile(outputFile string, text string, asciiRep [][]string) error {
 func writeASCIIToFile(file *os.File, str string, asciiRep [][]string) error {
 	arr := LineNum(str)
 	for i := 0; i < 8; i++ {
-		line := ""
 		for _, num := range arr {
-			line += asciiRep[num][i]
-			_, err := fmt.Fprint(file, line)
+			_, err := fmt.Fprint(file, asciiRep[num][i])
 			if err != nil {
 				return fmt.Errorf("error writing to file: %v", err)
 			}
 		}
-		_,err := fmt.Fprintln(file)
+		_,err := fmt.Fprintln(file, "")
 		if err != nil {
 			return fmt.Errorf("error writing to file: %v", err)
 		}
