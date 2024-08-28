@@ -77,8 +77,20 @@ func main() {
 		err := functions.WriteToFile(outputFile, text, asciiRep)
 		if err != nil {
 			fmt.Println("Error writing to file:", err)
+			return
 		}
+		content, err := os.ReadFile(outputFile)
+		if err != nil {
+			fmt.Println("Error reading file:", err)
+			return
+		}
+		contentStr := string(content)
+		contentStr = strings.TrimSuffix(contentStr, "\n")
+		err = os.WriteFile(outputFile, []byte(contentStr), 0644)
+		if err != nil {
+			fmt.Println("Error writing to file:", err)
+			return
+		}
+		// fmt.Println(contentStr)
 	}
-	//file, _ := os.ReadFile("result.txt")
-	//fmt.Println(string(file))
 }
