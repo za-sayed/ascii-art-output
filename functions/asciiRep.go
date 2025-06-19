@@ -1,5 +1,7 @@
 package functions
 
+import "fmt"
+
 func AsciiRep(fileLines []string) [][]string {
 	var asciiRep [][]string
 	var arr []string
@@ -17,5 +19,6 @@ func AsciiRep(fileLines []string) [][]string {
 			counter = 0
 		}
 	}
+	fmt.Println(asciiRep[33])
 	return asciiRep
 }
